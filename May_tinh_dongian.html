@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>May tinh don gian</title>
+    <style>
+        * {padding: 0; margin: 0;}
+        body {font-family: sans-serif; font-size: 14px; color: #333;}
+        .calculator {width: 300px; height: 300px; margin: 20px auto; padding: 10px; border: 5px solid #666; border-radius: 4px;}
+        #box-result {width: calc(100% - 16px); background-color: #f9f9f9; border: 1px solid #666; padding: 5px 7px; font-size: 20px; border-top: none; text-align: right;}
+        .box-button input {width: 24%;  height: 50px; margin-top: 16px; font-size: 20px; border-radius: 4px;}
+    </style>
+</head>
+<body>
+<div class="calculator">
+    <input type="text" id="box-result" value="">
+    <div class="box-button">
+        <input type="button" id="number1" class="number" onclick="nhap(this.value)" value="1">
+        <input type="button" id="number2" class="number" onclick="nhap(this.value)" value="2">
+        <input type="button" id="number3" class="number" onclick="nhap(this.value)" value="3">
+        <input type="button" id="plus-operation" onclick="nhap(this.value)" value="+">
+        <input type="button" id="number4" class="number" onclick="nhap(this.value)" value="4">
+        <input type="button" id="number5" class="number" onclick="nhap(this.value)" value="5">
+        <input type="button" id="number6" class="number" onclick="nhap(this.value)" value="6">
+        <input type="button" id="minus-operation" onclick="nhap(this.value)" value="-">
+        <input type="button" id="number7" class="number" onclick="nhap(this.value)" value="7">
+        <input type="button" id="number8" class="number" onclick="nhap(this.value)" value="8">
+        <input type="button" id="number9" class="number" onclick="nhap(this.value)" value="9">
+        <input type="button" id="times-operation" onclick="nhap(this.value)" value="*">
+        <input type="button" id="refresh" class="refresh" onclick="del()" value="C">
+        <input type="button" id="number0" class="number" onclick="nhap(this.value)" value="0">
+        <input type="button" id="equal" onclick="tinhToan()" value="=">
+        <input type="button" id="divide-operation" onclick="nhap(this.value)" value="/">
+    </div>
+</div>
+
+<script>
+    function nhap(value) {
+        // check xem gia tri box-result neu la = string 0 thi gan luon gia tri = value. con khong
+        // thi nguoc lai cong chuoi.
+        if(document.getElementById('box-result').value === "0") {
+            document.getElementById('box-result').value = value;
+        } else {
+            // let boxResult = document.getElementById('box-result').value;
+            // boxResult += value;
+            // document.getElementById('box-result').value = boxResult;
+            document.getElementById('box-result').value += value;
+        }
+    }
+
+    // Gan chuoi o box-result = chuoi 0
+    function del() {
+        document.getElementById('box-result').value = "0";
+    }
+
+    // Hien thi ket qua o box-result
+    function tinhToan() {
+        let a = eval(document.getElementById('box-result').value);
+        document.getElementById('box-result').value = a;
+    }
+
+</script>
+</body>
+</html>
